@@ -1,3 +1,8 @@
 DALL-E
+dlib
+keras
 Pillow
 requests
+scipy
+tensorflow
+tqdm

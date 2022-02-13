@@ -43,6 +43,6 @@ class Downloader(ABC):
 if __name__ == '__main__':
     person_downloader = Downloader('person')
     cat_downloader = Downloader('cat')
-    for index in range(1, 10000):
+    for index in range(820, 10000):
         person_downloader.download(str(index).zfill(4))
         cat_downloader.download(str(index).zfill(4))

@@ -4,6 +4,15 @@ Playground for image generation
 
 This repository contains the code and notes for various image generation algorithms that are out there.
 
+## Installation notes
+
+In order to use stylegan_encoder, we need the library `dlib`. This can only be installed when you have locally `cmake` installed. This can be done as follows:
+
+```shell script
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 2> /dev/null
+brew install cmake
+```
+
 ## DALL-E
 
 [DALL-E](https://openai.com/blog/dall-e/) creates images from text captions for a wide range of concepts expressible in natural language. I didn't find a proper web interface or API to use it, and hence was not able to play around with it properly. 

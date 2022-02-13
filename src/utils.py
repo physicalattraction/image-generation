@@ -1,8 +1,8 @@
 import io
-from datetime import datetime
-
 import requests
 from PIL import Image
+from datetime import datetime
+from typing import Collection, Iterator, Union
 
 
 def download_and_save(url: str, output_file: str):
@@ -52,3 +52,37 @@ def generate_filename(prefix: str = '', suffix: str = '',
         base_elements.append(suffix)
     basename = '_'.join(base_elements)
     return basename + extension
+
+
+def split_to_batches(collection: Collection, batch_size: int) -> Iterator:
+    """
+    Split the given collection into batches of (max) the given size
+
+    >>> list(split_to_batches([1, 2, 3, 4], 2))
+    [[1, 2], [3, 4]]
+    >>> list(split_to_batches([1, 2, 3, 4, 5], 2))
+    [[1, 2], [3, 4], [5]]
+    """
+
+    for i in range(0, len(collection), batch_size):
+        yield collection[i:i + batch_size]
+
+
+def str2bool(v: Union[str, bool]) -> bool:
+    """
+    Convert the input string to a boolean
+
+    >>> all([str2bool(elem) for elem in [True, 'yes', 'true', 't', 'y', '1']])
+    True
+    >>> any([str2bool(elem) for elem in [False, 'no', 'false', 'f', 'n', '0']])
+    False
+    """
+
+    if isinstance(v, bool):
+        return v
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise AssertionError('Boolean value expected.')
